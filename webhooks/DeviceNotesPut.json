@@ -1,0 +1,13 @@
+{
+    "event": "DeviceNotesPut",
+    "url": "https://api.particle.io/v1/devices/{{PARTICLE_DEVICE_ID}}",
+    "query": {
+    	"access_token": "ab142050967cff79dc6586c82193978b3a62cab9"
+    },
+    "requestType": "PUT",
+    "json": {
+    	"notes":"{{{PARTICLE_EVENT_VALUE}}}"
+    },
+    "mydevices": true,
+    "noDefaults":true
+}

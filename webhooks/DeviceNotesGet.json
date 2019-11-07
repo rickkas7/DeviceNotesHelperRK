@@ -1,0 +1,12 @@
+{
+    "event": "DeviceNotesGet",
+    "url": "https://api.particle.io/v1/devices/{{PARTICLE_DEVICE_ID}}",
+    "query": {
+    	"access_token": "ab142050967cff79dc6586c82193978b3a62cab9"
+    },
+    "requestType": "GET",
+    "responseTopic": "DeviceNotesResponse",
+    "responseTemplate": "{{{notes}}}",
+    "mydevices": true,
+    "noDefaults":true
+}
