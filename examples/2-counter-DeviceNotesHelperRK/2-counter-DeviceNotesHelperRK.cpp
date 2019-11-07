@@ -30,7 +30,7 @@ void loop() {
 	if (millis() - lastUpdateCounter >= UPDATE_COUNTER_PERIOD && Particle.connected()) {
 		lastUpdateCounter = millis();
 
-		if (!deviceNotesHelper.hasData()) {
+		if (!deviceNotesHelper.getHasValidData()) {
 			// We didn't update from the cloud at boot successfully, so try to get data again
 			deviceNotesHelper.getFromCloud();
 		}

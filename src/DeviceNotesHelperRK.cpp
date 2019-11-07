@@ -11,8 +11,8 @@ DeviceNotesHelper &DeviceNotesHelper::withGetPeriodic(unsigned long periodSecs) 
 	getFrequency = GetFrequency::PERIODIC;
 	getPeriodicPeriodMs = periodSecs * 1000;
 
-	if (periodMs < 10000) {
-		periodMs = 10000;
+	if (getPeriodicPeriodMs < 10000) {
+		getPeriodicPeriodMs = 10000;
 	}
 	return *this;
 }
