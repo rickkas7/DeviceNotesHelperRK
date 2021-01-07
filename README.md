@@ -388,7 +388,12 @@ curl -X PUT -H "Content-Type: application/json" -d '{"notes":"{\"counter\":1,\"s
 
 When updating the data by curl you must include the whole data, not just the field you want to update. There is a possibility of update conflicts because of this, so this doesn't really take the place of using a proper database.
 
+## Version History
 
+### 0.0.2 (2021-01-07)
+
+- Upgrade to JsonParserGeneratorRK 0.1.4
+- Use addChunked to support out-of-order multipart webhook responses
 
 
 

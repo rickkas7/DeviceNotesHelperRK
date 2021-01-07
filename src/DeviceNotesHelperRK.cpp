@@ -67,26 +67,14 @@ void DeviceNotesHelper::putToCloud() {
 
 void DeviceNotesHelper::hookResponseHandler(const char *event, const char *data) {
 
-	int responseIndex = 0;
-
-	const char *slashOffset = strrchr(event, '/');
-	if (slashOffset) {
-		responseIndex = atoi(slashOffset + 1);
-	}
-
-	if (responseIndex == 0) {
+	if (!data[0]) {
+		// If there is no data (the device notes were never set), create an empty object
+		// so it will parse correctly
 		jp.clear();
-		if (data[0]) {
-			jp.addString(data);
-		}
-		else {
-			// If there is no data (the device notes were never set), create an empty object
-			// so it will parse correctly
-			jp.addString("{}");
-		}
+		jp.addString("{}");
 	}
 	else {
-		jp.addString(data);
+		jp.addChunkedData(event, data);
 	}
 
 	if (jp.parse()) {
