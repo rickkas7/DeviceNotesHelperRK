@@ -2,6 +2,11 @@
 
 *Utilities for using device notes from Particle devices*
 
+You should really [Ledger](https://docs.particle.io/getting-started/logic-ledger/ledger/) which is built into Device OS and the Particle
+platform and is a much better way to store configuration settings.
+
+---
+
 When you open a device in the [console](https://console.particle.io) there's a section on the right for notes. 
 
 ![Empty Note](images/notes-empty.png)
@@ -57,7 +62,7 @@ This technique requires two webhooks, one to get data and one to set it. The eas
     	"access_token": "ab142050967cff79dc6586c82193978b3a62cab9"
     },
     "requestType": "GET",
-    "responseTopic": "DeviceNotesResponse",
+    "responseTopic": "{{{PARTICLE_DEVICE_ID}}}/DeviceNotesResponse",
     "responseTemplate": "{{{notes}}}",
     "mydevices": true,
     "noDefaults":true
@@ -389,6 +394,11 @@ curl -X PUT -H "Content-Type: application/json" -d '{"notes":"{\"counter\":1,\"s
 When updating the data by curl you must include the whole data, not just the field you want to update. There is a possibility of update conflicts because of this, so this doesn't really take the place of using a proper database.
 
 ## Version History
+
+### 0.0.3 (2025-03-17)
+
+- Add warning to switch to Ledger
+- Switch to using a Device ID prefix on the subscription by default
 
 ### 0.0.2 (2021-01-07)
 

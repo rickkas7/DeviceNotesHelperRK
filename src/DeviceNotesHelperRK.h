@@ -85,7 +85,7 @@ public:
 	 *
 	 * Default is "DeviceNotesResponse". This must match the hook-response field in the DeviceNotesGet webhook.
 	 */
-	DeviceNotesHelper &withSubscriptionName(const char *name) { subscriptionName = name; return *this; };
+	DeviceNotesHelper &withSubscriptionName(const char *name, bool prefixWithDeviceId = true) { subscriptionName = name; this->prefixWithDeviceId = prefixWithDeviceId; return *this; };
 
 
 	/**
@@ -173,6 +173,7 @@ protected:
 	const char *subscriptionName = "DeviceNotesResponse";		//!< Event name used for subscription. Set before setup()
 	const char *getEventName = "DeviceNotesGet";				//!< Event name used to get data from the cloud
 	const char *putEventName = "DeviceNotesPut";				//!< Event name to put data to the cloud
+	bool prefixWithDeviceId = true;								//!< Prefix the subscriptionName with the Device ID (and a slash)
 };
 
 

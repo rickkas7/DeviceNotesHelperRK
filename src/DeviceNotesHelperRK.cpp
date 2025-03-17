@@ -19,8 +19,16 @@ DeviceNotesHelper &DeviceNotesHelper::withGetPeriodic(unsigned long periodSecs) 
 
 
 void DeviceNotesHelper::setup() {
+	String name;
 
-	Particle.subscribe(subscriptionName, &DeviceNotesHelper::hookResponseHandler, this, MY_DEVICES);
+	if (prefixWithDeviceId) {
+		name = String::format("%s/%s", System.deviceID().c_str(), subscriptionName);
+	}
+	else {
+		name = subscriptionName;
+	}
+
+	Particle.subscribe(name, &DeviceNotesHelper::hookResponseHandler, this, MY_DEVICES);
 }
 
 
